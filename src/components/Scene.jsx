@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { val } from '@theatre/core';
 import { useCurrentSheet, editable as e } from '@theatre/r3f'
 import React from 'react'
+import HexaBerryCan5 from './HexBerrycans/HexBerryCan5.jsx';
 
 function Scene() {
     const sheet = useCurrentSheet();
@@ -14,12 +15,9 @@ function Scene() {
     })
   return (
     <>
-    <Environment preset='city' />
-    <ambientLight intensity={0.5} />
-    <e.mesh theatreKey='box'>
-      <boxGeometry args={[2,2,2]}  />
-      <meshBasicMaterial color={'pink'}/>
-    </e.mesh>
+    <Environment preset='apartment' />
+    <ambientLight intensity={1} />
+    <HexaBerryCan5 scale={0.03} position={[0,0,0]} />
     </>
   )
 }

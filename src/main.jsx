@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             preserveDrawingBuffer: true,
         } }
         camera={{
-          position: [5, 5, -5],
+          position: [0, 0, 4],
           fov: 75,
         }}
         >
