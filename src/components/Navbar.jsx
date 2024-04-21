@@ -4,7 +4,7 @@ import '../index.css';
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 w-full flex items-center justify-center p-4 gloria-hallelujah-regular">
+    <nav className="fixed top-0 w-full flex items-center justify-center p-4 gloria-hallelujah-regular text-sm">
       <div className="flex items-center gap-36">
         <img src={logo} alt='Logo' />
         <h3 className="cursor-pointer hover:underline">HOME</h3> 

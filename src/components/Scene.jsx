@@ -18,9 +18,9 @@ function Scene() {
   return (
     <>
     <color attach="background" args={["#FCF8F5"]} />
-    <Environment preset='apartment' />
-    <ambientLight intensity={1} />
-    <HexaBerryCan5 scale={0.03} position={[0,0,0]} />
+    <Environment preset='warehouse' />
+    <ambientLight intensity={6} />
+    <HexaBerryCan5 scale={0.03} position={[0,-0.3,0]} />
     </>
   )
 }
