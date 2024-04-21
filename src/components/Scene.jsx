@@ -5,6 +5,8 @@ import { useCurrentSheet, editable as e } from '@theatre/r3f'
 import React from 'react'
 import HexaBerryCan5 from './HexBerrycans/HexBerryCan5.jsx';
 
+
+
 function Scene() {
     const sheet = useCurrentSheet();
     const scroll = useScroll();
