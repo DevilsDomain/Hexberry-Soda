@@ -20,7 +20,7 @@ function Scene() {
     <color attach="background" args={["#FCF8F5"]} />
     <Environment preset='warehouse' />
     <ambientLight intensity={6} />
-    <HexaBerryCan5 scale={0.03} position={[0,-0.3,0]} />
+    <HexaBerryCan5 scale={0.033} position={[0,-0.3,0]} />
     </>
   )
 }
