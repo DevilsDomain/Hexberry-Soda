@@ -6,25 +6,25 @@ import './index.css'
 function App({sheet}) {
   return (
     <>
-    <ScrollControls pages={10} damping={0.5}>
+    <ScrollControls pages={5} damping={1} maxSpeed={0.1}>
       <SheetProvider sheet={sheet} >
         <Scene />
       </SheetProvider>
       <Scroll html>
-        <div>
+        <div className="w-screen h-screen">
           <h1 className="text-3xl font-bold underline">Landing page</h1>
         </div>
-        <div style={{background:"green"}}>
-          <h1>Lemon Lime</h1>
+        <div className="w-screen h-screen"> 
+          <h1 className="text-3xl font-bold underline">Lemon Lime</h1>
         </div>
-        <div style={{background:"purple"}}>
-          <h1>Berries</h1>
+        <div className="w-screen h-screen">
+          <h1 className="text-3xl font-bold underline">Berries</h1>
         </div>
-        <div style={{background:"orange"}}>
-          <h1>Exotic</h1>
+        <div className="w-screen h-screen">
+          <h1 className="text-3xl font-bold underline">Exotic</h1>
         </div>
-        <div style={{background:"blue"}}>
-          <h1>Podium</h1>
+        <div className="w-screen h-screen">
+          <h1 className="text-3xl font-bold underline">Podium</h1>
         </div>
       </Scroll>
     </ScrollControls>
