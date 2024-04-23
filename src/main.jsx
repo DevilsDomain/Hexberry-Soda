@@ -7,7 +7,6 @@ import './index.css'
 import studio from '@theatre/studio'
 import extension from '@theatre/r3f/dist/extension'
 import { getProject } from "@theatre/core"
-import { CubeCamera, OrthographicCamera } from '@react-three/drei'
 
 studio.initialize();
 studio.extend(extension);
@@ -26,10 +25,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           fov: 45,
         }}
         >
-    {/* <CubeCamera makeDefault /> */}
     <Suspense fallback={null}>
       <App sheet={sheet} />
     </Suspense>
     </Canvas>
   </React.StrictMode>,
 )
+
+export default sheet;

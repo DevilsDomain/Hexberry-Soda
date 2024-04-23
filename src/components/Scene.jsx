@@ -9,6 +9,7 @@ import { Vector3 } from 'three'
 
 
 
+
 function Scene() {
     const sheet = useCurrentSheet();
     const scroll = useScroll();
@@ -31,9 +32,9 @@ function Scene() {
             HEXABERRY
             <meshBasicMaterial>
             <GradientTexture
-            stops={[0, 1]} // As many stops as you want
-            colors={['#FD55A6', '#FCC737']} // Colors need to match the number of stops
-            size={1024} // Size is optional, default = 1024
+            stops={[0, 1]} 
+            colors={['#FD55A6', '#FCC737']}
+            size={1024}
             type={GradientType.Radial}
             />
             </meshBasicMaterial>
