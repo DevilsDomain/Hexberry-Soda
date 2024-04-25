@@ -39,7 +39,7 @@ function Scene() {
         }
         // Text Distortion logic
         textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
-
+        // Background color change logic
         const background = sheet.object('background', {
             gradient: {
                 color1: types.rgba({ r: 255, g: 0, b: 0, a: 1 }),
