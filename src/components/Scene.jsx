@@ -14,7 +14,7 @@ function Scene() {
     const vec = new Vector3()
     const meshRef = useRef();
     const textRef = useRef();
-    const [material, setMaterial] = useState('Soda.004');
+    // const [material, setMaterial] = useState('Soda.004');
     const [hovered, hover] = useState(false)
     const [gradientColors, setGradientColors] = useState(['#FCF8F5', '#FCF8F5']);
 
@@ -26,17 +26,6 @@ function Scene() {
         // Camera lookAt cursor logic
         camera.position.lerp(vec.set(mouse.x, mouse.y, camera.position.z), 0.05)
         camera.lookAt(0, 0, 0)
-        // Materail & Background change logic
-        const rotationY = meshRef.current.rotation.y;
-        if (rotationY >= 3.37 && rotationY < 9.28) {
-            setMaterial('Soda.001');
-        } else if (rotationY >= 9.28 && rotationY < 15.52) {
-            setMaterial('Soda.003');
-        } else if (rotationY >= 15.52) {
-            setMaterial('Soda.004');
-        } else {
-            setMaterial('Soda.004');
-        }
         // Text Distortion logic
         textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
         // Background color change logic
@@ -58,12 +47,16 @@ function Scene() {
           
           const color1Hex = rgbaObjectToHexArray(background.value.gradient.color1);
           const color2Hex = rgbaObjectToHexArray(background.value.gradient.color2);
-          console.log([color1Hex, color2Hex]); 
           setGradientColors([color1Hex, color2Hex])
         });
 
-        
-    
+
+    const material = sheet.object('material', {
+        materials: types.stringLiteral(
+            'materials',
+            { 'Soda.001': 'Soda1', 'Soda.002': 'Soda2', 'Soda.004': 'Soda3'  },
+            ),
+    }, {reconfigure: true})
 
   return (
     <>
@@ -94,7 +87,7 @@ function Scene() {
             </MeshDistortMaterial>
         </Text>
     </Center>
-    <HexaBerryCan5 scale={0.047} position={[0,-0.3,0]} material={material} meshRef={meshRef} />
+    <HexaBerryCan5 scale={0.047} position={[0,-0.3,0]} material={material.value.materials} meshRef={meshRef} />
     </>
   )
 }
