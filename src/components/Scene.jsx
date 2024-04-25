@@ -27,11 +27,13 @@ function Scene() {
         // Materail change logic
         const rotationY = meshRef.current.rotation.y;
         console.log('Rotation Y:', rotationY); // Log the rotation value
-        if (rotationY >= 3.37) {
-        setMaterial('Soda.001');
-        } else {
-        setMaterial('Soda.004');
-        }
+        if (rotationY >= 3.37 && rotationY < 9.28) {
+            setMaterial('Soda.001');
+          } else if (rotationY >= 9.28) {
+            setMaterial('Soda.003');
+          } else {
+            setMaterial('Soda.004');
+          }
         })
 
   return (

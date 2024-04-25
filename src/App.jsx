@@ -41,7 +41,7 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-32 right-20" />
         </div>
         {/* Flavor 2 */}
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen bg-violet-700 opacity-45">
           <h1 className="text-3xl font-bold underline">Berries</h1>
         </div>
         {/* Flavor 3 */}
