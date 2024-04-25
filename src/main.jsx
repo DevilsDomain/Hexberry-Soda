@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <Canvas gl={ {
             antialias: true,
-            toneMapping: THREE.ReinhardToneMapping,
-            // outputColorSpace: THREE.SRGBColorSpace
+            toneMapping: THREE.ACESFilmicToneMapping,
+            outputColorSpace: THREE.SRGBColorSpace,
             preserveDrawingBuffer: true,
         } }
         camera={{

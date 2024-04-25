@@ -53,7 +53,6 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-64 right-96" />
         </div>
         {/* Flavor 3 */}
-        {/* bg-orange-600 opacity-20 */}
         <div className="w-screen h-screen relative">
         <p className=" text-center w-44 z-10 absolute bottom-60 right-80">vibrant blend that  transports you to paradise with every sip.</p>
           <img src={speechBubble3} alt="hand drawn speech bubble" className="h-96 w-64 absolute bottom-24 right-72" />
