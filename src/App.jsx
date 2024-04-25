@@ -1,4 +1,4 @@
-import { Scroll, ScrollControls } from "@react-three/drei"
+import { Ring, Scroll, ScrollControls } from "@react-three/drei"
 import { SheetProvider, editable as e } from "@theatre/r3f"
 import Scene from "./components/Scene";
 import './index.css'
@@ -9,6 +9,8 @@ import arrowLoop from './assets/loop-arrow.svg';
 import arrowUp from "./assets/arrow-up.svg";
 import Info from "./components/Info";
 import speechBubble from "./assets/speechBubble.svg";
+import speechBubble2 from "./assets/speechBubble2.svg";
+
 
 function App({sheet}) {
   return (
@@ -28,8 +30,8 @@ function App({sheet}) {
           <img src={arrowDown} alt="down arrow" className="absolute bottom-28" />
           <p className="w-64 absolute left-64 bottom-64 text-right">Join the fizz revolution and experience the taste sensation everyone's talking about!</p>
           <p className="w-64 absolute right-60 bottom-96">Explore our vibrant range of refreshing sodas bursting with Hexaberry goodness.</p>
-          <img src={arrowLoop} alt="Loop arrow" className="absolute left-100 bottom-80" />
-          <img src={arrowUp} alt="up arrow" className="absolute right-100 bottom-72" />
+          <img src={arrowLoop} alt="Loop arrow" className="absolute left-[29rem] bottom-80" />
+          <img src={arrowUp} alt="up arrow" className="absolute right-[29rem] bottom-72" />
         </div>
         {/* Flavor 1 */}
         <div className="w-screen h-screen flex flex-col items-end relative">
@@ -41,8 +43,13 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-32 right-20" />
         </div>
         {/* Flavor 2 */}
-        <div className="w-screen h-screen bg-violet-700 opacity-45">
-          <h1 className="text-3xl font-bold underline">Berries</h1>
+        <div className="w-screen h-screen relative">
+        <p className=" text-center w-72 z-10 absolute top-44 right-[30rem]">A burst of ripe berries that tantalize your taste buds and leave you craving more.</p>
+          <img src={speechBubble2} alt="hand drawn speech bubble" className="h-96 w-96 absolute top-7 left-[34rem]" />
+          <div className=" absolute bottom-28 left-[36rem]">
+            <Info align={"left"} />
+          </div>
+          <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-64 right-96" />
         </div>
         {/* Flavor 3 */}
         <div className="w-screen h-screen">
