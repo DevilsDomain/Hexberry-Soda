@@ -6,11 +6,12 @@ import * as THREE from "three"
 import './index.css'
 import studio from '@theatre/studio'
 import extension from '@theatre/r3f/dist/extension'
-import { getProject } from "@theatre/core"
+import { getProject, types } from "@theatre/core"
 
 studio.initialize();
 studio.extend(extension);
 const sheet = getProject('HexBerry Animation').sheet('Scene');
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
