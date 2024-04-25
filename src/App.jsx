@@ -1,15 +1,16 @@
 import { Ring, Scroll, ScrollControls } from "@react-three/drei"
 import { SheetProvider, editable as e } from "@theatre/r3f"
-import Scene from "./components/Scene";
+import Scene from './components/Scene';
 import './index.css'
-import Navbar from "./components/Navbar";
+import Navbar from './components/Navbar';
 import lines from './assets/excitment.svg'
-import arrowDown from "./assets/arrow-down.svg";
+import arrowDown from './assets/arrow-down.svg';
 import arrowLoop from './assets/loop-arrow.svg';
-import arrowUp from "./assets/arrow-up.svg";
-import Info from "./components/Info";
-import speechBubble from "./assets/speechBubble.svg";
-import speechBubble2 from "./assets/speechBubble2.svg";
+import arrowUp from './assets/arrow-up.svg';
+import Info from './components/Info';
+import speechBubble from './assets/speechBubble.svg';
+import speechBubble2 from './assets/speechBubble2.svg';
+import speechBubble3 from './assets/speechBubble3.svg';
 
 
 function App({sheet}) {
@@ -52,8 +53,14 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-64 right-96" />
         </div>
         {/* Flavor 3 */}
-        <div className="w-screen h-screen bg-orange-700 opacity-30">
-          <h1 className="text-3xl font-bold underline">Exotic</h1>
+        {/* bg-orange-600 opacity-20 */}
+        <div className="w-screen h-screen relative">
+        <p className=" text-center w-44 z-10 absolute bottom-60 right-80">vibrant blend that  transports you to paradise with every sip.</p>
+          <img src={speechBubble3} alt="hand drawn speech bubble" className="h-96 w-64 absolute bottom-24 right-72" />
+          <div className=" absolute bottom-28 left-96">
+            <Info align={"right"} />
+          </div>
+          <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute bottom-36 right-64" />
         </div>
         {/* Podium */}
         <div className="w-screen h-screen">
