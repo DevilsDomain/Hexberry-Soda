@@ -1,10 +1,10 @@
-import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial, Plane, OrbitControls  } from '@react-three/drei';
+import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial  } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
-import { val } from '@theatre/core';
-import { useCurrentSheet, editable as e } from '@theatre/r3f'
+import { val, types } from '@theatre/core';
+import { useCurrentSheet} from '@theatre/r3f'
 import React from 'react'
 import HexaBerryCan5 from './HexBerrycans/HexBerryCan5.jsx';
-import { Vector3, MathUtils, PlaneGeometry, } from 'three'
+import { Vector3, MathUtils} from 'three'
 import { useState, useRef } from 'react';
 
 function Scene() {
@@ -28,27 +28,45 @@ function Scene() {
         camera.lookAt(0, 0, 0)
         // Materail & Background change logic
         const rotationY = meshRef.current.rotation.y;
-        console.log('Rotation Y:', rotationY);
         if (rotationY >= 3.37 && rotationY < 9.28) {
             setMaterial('Soda.001');
-            setGradientColors(['#ACE3D8', '#F6C276']); // Colors for 'Soda.001'
         } else if (rotationY >= 9.28 && rotationY < 15.52) {
             setMaterial('Soda.003');
-            setGradientColors(['#FBA7D7', '#94A2FA']); // Colors for 'Soda.003'
         } else if (rotationY >= 15.52) {
             setMaterial('Soda.004');
-            setGradientColors(['#FFA6D1', '#FFEA8F']); // Colors for 'Soda.004'
         } else {
             setMaterial('Soda.004');
-            setGradientColors(['#FCF8F5', '#FCF8F5']); // Default colors
         }
         // Text Distortion logic
         textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
+
+        const background = sheet.object('background', {
+            gradient: {
+                color1: types.rgba({ r: 255, g: 0, b: 0, a: 1 }),
+                color2: types.rgba({r: 255, g: 0, b: 0, a: 1}),
+              },
+          }, {reconfigure: true});
+
+        function rgbaObjectToHexArray(colorObj) {
+            const { r, g, b, a } = colorObj;
+            const rHex = Math.round(r * 255).toString(16).padStart(2, '0');
+            const gHex = Math.round(g * 255).toString(16).padStart(2, '0');
+            const bHex = Math.round(b * 255).toString(16).padStart(2, '0');
+            const hexColor = `#${rHex}${gHex}${bHex}`;
+            return hexColor;
+          }
+          
+          const color1Hex = rgbaObjectToHexArray(background.value.gradient.color1);
+          const color2Hex = rgbaObjectToHexArray(background.value.gradient.color2);
+          console.log([color1Hex, color2Hex]); 
+          setGradientColors([color1Hex, color2Hex])
         });
+
+        
+    
 
   return (
     <>
-    {/* <OrbitControls /> */}
     <color attach="background" args={["#FCF8F5"]} />
     <mesh position={[0,0,-2]}>
       <planeGeometry args={[21, 12, 32, 32]} />
