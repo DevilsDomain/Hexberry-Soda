@@ -38,7 +38,7 @@ function App({sheet}) {
           <div className=" absolute bottom-28 right-52">
             <Info align={"left"} />
           </div>
-          <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-20 right-40" />
+          <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-32 right-20" />
         </div>
         {/* Flavor 2 */}
         <div className="w-screen h-screen">
