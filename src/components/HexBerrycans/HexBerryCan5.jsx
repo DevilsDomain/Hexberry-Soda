@@ -5,18 +5,6 @@ import { useFrame } from '@react-three/fiber';
 
 export default function HexaBerryCan5({ scale, position, material, meshRef, ...props }) {
   const { nodes, materials } = useGLTF('./models/hexaberry_soda_cans_DRACO.glb');
-  // const meshRef = useRef();
-  // const [material, setMaterial] = useState('Soda.004');
-
-  // useFrame(() => {
-  //   const rotationY = meshRef.current.rotation.y;
-  //   console.log('Rotation Y:', rotationY); // Log the rotation value
-  //   if (rotationY >= 3.37) {
-  //     setMaterial('Soda.001');
-  //   } else {
-  //     setMaterial('Soda.004');
-  //   }
-  // });
 
   return (
     <e.group theatreKey='HexbBerryCan5' scale={scale} position={position} dispose={null} ref={meshRef}>
