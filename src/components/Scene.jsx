@@ -26,15 +26,17 @@ function Scene() {
         camera.lookAt(0, 0, 0)
         // Materail change logic
         const rotationY = meshRef.current.rotation.y;
-        console.log('Rotation Y:', rotationY); // Log the rotation value
+        console.log('Rotation Y:', rotationY);
         if (rotationY >= 3.37 && rotationY < 9.28) {
             setMaterial('Soda.001');
-          } else if (rotationY >= 9.28) {
-            setMaterial('Soda.003');
+          } else if (rotationY >= 9.28 && rotationY < 15.52) {
+            setMaterial('Soda.003'); 
+          } else if (rotationY >= 15.52) {
+            setMaterial('Soda.004');
           } else {
             setMaterial('Soda.004');
           }
-        })
+        });
 
   return (
     <>
