@@ -14,7 +14,6 @@ function Scene() {
     const vec = new Vector3()
     const meshRef = useRef();
     const textRef = useRef();
-    // const [material, setMaterial] = useState('Soda.004');
     const [hovered, hover] = useState(false)
     const [gradientColors, setGradientColors] = useState(['#FCF8F5', '#FCF8F5']);
 
