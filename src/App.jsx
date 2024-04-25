@@ -7,6 +7,7 @@ import lines from './assets/excitment.svg'
 import arrowDown from "./assets/arrow-down.svg";
 import arrowLoop from './assets/loop-arrow.svg';
 import arrowUp from "./assets/arrow-up.svg";
+import Info from "./components/Info";
 
 function App({sheet}) {
   return (
@@ -30,8 +31,8 @@ function App({sheet}) {
           <img src={arrowUp} alt="up arrow" className="absolute right-100 bottom-72" />
         </div>
         {/* Flavor 1 */}
-        <div className="w-screen h-screen"> 
-          <h1 className="text-3xl font-bold underline">Lemon Lime</h1>
+        <div className="w-screen h-screen flex flex-col">
+          <Info align={"left"} />
         </div>
         {/* Flavor 2 */}
         <div className="w-screen h-screen">
