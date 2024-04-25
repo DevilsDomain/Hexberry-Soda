@@ -23,6 +23,12 @@ body,
     font-weight: 400;
     font-style: normal;
   }
+  .itim-regular {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
   .left-100 {
     left: 29rem;
   }
