@@ -8,6 +8,7 @@ import arrowDown from "./assets/arrow-down.svg";
 import arrowLoop from './assets/loop-arrow.svg';
 import arrowUp from "./assets/arrow-up.svg";
 import Info from "./components/Info";
+import speechBubble from "./assets/speechBubble.svg";
 
 function App({sheet}) {
   return (
@@ -31,8 +32,13 @@ function App({sheet}) {
           <img src={arrowUp} alt="up arrow" className="absolute right-100 bottom-72" />
         </div>
         {/* Flavor 1 */}
-        <div className="w-screen h-screen flex flex-col">
-          <Info align={"left"} />
+        <div className="w-screen h-screen flex flex-col items-end relative">
+          <p className=" text-center w-72 z-10 absolute top-20 right-44">The perfect balance of tangy lime and zesty lemon in every refreshing gulp.</p>
+          <img src={speechBubble} alt="hand drawn speech bubble" className="h-96 w-96 absolute -top-14 right-32" />
+          <div className=" absolute bottom-28 right-52">
+            <Info align={"left"} />
+          </div>
+          <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-20 right-40" />
         </div>
         {/* Flavor 2 */}
         <div className="w-screen h-screen">
