@@ -1,4 +1,4 @@
-import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial  } from '@react-three/drei';
+import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial, Backdrop, Plane  } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { val, types } from '@theatre/core';
 import { useCurrentSheet} from '@theatre/r3f'
@@ -6,6 +6,7 @@ import React from 'react'
 import HexaBerryCan5 from './HexBerrycans/HexBerryCan5.jsx';
 import { Vector3, MathUtils} from 'three'
 import { useState, useRef } from 'react';
+import {editable as e} from '@theatre/r3f';
 
 function Scene() {
     const sheet = useCurrentSheet();
@@ -50,6 +51,7 @@ function Scene() {
         });
 
 
+    // Material change logic for theater js
     const material = sheet.object('material', {
         materials: types.stringLiteral(
             'materials',
@@ -57,17 +59,32 @@ function Scene() {
             ),
     }, {reconfigure: true})
 
+
   return (
     <>
     <color attach="background" args={["#FCF8F5"]} />
-    <mesh position={[0,0,-2]}>
-      <planeGeometry args={[21, 12, 32, 32]} />
+    <Environment preset='warehouse'/>
+    <ambientLight intensity={1} />
+{/* 
+    <directionalLight
+    theatreKey='DirectionalLight'
+    intensity={0.5}
+    color={"#FCF8F5"}
+    position={[0,6, 0]} // Position the light at the ceiling level
+    rotation={[-Math.PI / 2, 0, 0]} // Rotate the light to point downwards
+    castShadow
+    shadow-mapSize-height={512}
+    shadow-mapSize-width={512}
+/> */}
+
+    {/* Background */}
+    <mesh position={[0,0,-6]}>
+      <planeGeometry args={[27, 16, 32, 32]} />
         <meshBasicMaterial>
             <GradientTexture stops={[0, 1]} colors={gradientColors} size={1024} />
         </meshBasicMaterial>
     </mesh>
-    <Environment preset='warehouse' />
-    <ambientLight intensity={1}/>
+    {/* Background Text */}
     <Center position={[0.5,1.9,-1]}>
         <Text
         theatreKey='3DText' 
@@ -86,7 +103,13 @@ function Scene() {
             </MeshDistortMaterial>
         </Text>
     </Center>
+    {/* Product */}
     <HexaBerryCan5 scale={0.047} position={[0,-0.3,0]} material={material.value.materials} meshRef={meshRef} />
+    {/* Floor */}
+    <e.mesh theatreKey='Floor' position={[0, -10, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <planeGeometry args={[25, 10, 32, 32]} />
+        <meshStandardMaterial attach="material" color="red" />
+    </e.mesh>
     </>
   )
 }

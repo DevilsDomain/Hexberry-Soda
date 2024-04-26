@@ -9,8 +9,8 @@ export default function HexaBerryCan5({ scale, position, material, meshRef, ...p
   return (
     <e.group theatreKey='HexbBerryCan5' scale={scale} position={position} dispose={null} ref={meshRef}>
       <group ref={meshRef} rotation={[-Math.PI / 2, 0, -1.429]} scale={9.104}>
-        <mesh geometry={nodes.Soda_5_Metal004_0.geometry} material={materials['Metal.004']} />
-        <mesh geometry={nodes.Soda_5_Soda004_0.geometry} material={materials[material]} />
+        <mesh castShadow geometry={nodes.Soda_5_Metal004_0.geometry} material={materials['Metal.004']} />
+        <mesh castShadow geometry={nodes.Soda_5_Soda004_0.geometry} material={materials[material]} />
       </group>
     </e.group>
   );
