@@ -9,16 +9,17 @@ Title: HexaBerry Soda Cans
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { editable as e } from '@theatre/r3f';
 
 export default function HexaBerryCan3({scale, position, ...props}) {
   const { nodes, materials } = useGLTF('./models/hexaberry_soda_cans_DRACO.glb')
   return (
-    <group scale={scale} position={position} dispose={null}>
+    <e.group theatreKey='HexaBerryCan3' scale={scale} position={position} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, -1.429]} scale={9.104}>
         <mesh geometry={nodes.Soda_3_Metal002_0.geometry} material={materials['Metal.002']} />
         <mesh geometry={nodes.Soda_3_Soda002_0.geometry} material={materials['Soda.002']} />
       </group>
-    </group>
+    </e.group>
   )
 }
 

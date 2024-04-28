@@ -1,4 +1,4 @@
-import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial, Backdrop, Plane  } from '@react-three/drei';
+import { Environment, useScroll, Text, Center, GradientTexture, GradientType, MeshDistortMaterial, Backdrop, Plane, OrbitControls  } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { val, types } from '@theatre/core';
 import { useCurrentSheet} from '@theatre/r3f'
@@ -7,6 +7,11 @@ import HexaBerryCan5 from './HexBerrycans/HexBerryCan5.jsx';
 import { Vector3, MathUtils} from 'three'
 import { useState, useRef } from 'react';
 import {editable as e} from '@theatre/r3f';
+import { VendingMachine } from './VendingMachine.jsx';
+import HexaBerryCan1 from './HexBerrycans/HexaBerryCan1.jsx';
+import HexaBerryCan2 from './HexBerrycans/HexaBerryCan2.jsx';
+import HexaBerryCan3 from './HexBerrycans/HexBerryCan3.jsx';
+import HexaBerrycan4 from './HexBerrycans/HexBerryCan4.jsx';
 
 function Scene() {
     const sheet = useCurrentSheet();
@@ -27,7 +32,7 @@ function Scene() {
         camera.position.lerp(vec.set(mouse.x, mouse.y, camera.position.z), 0.05)
         camera.lookAt(0, 0, 0)
         // Text Distortion logic
-        textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
+        // textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
         // Background color change logic
         const background = sheet.object('background', {
             gradient: {
@@ -62,20 +67,21 @@ function Scene() {
 
   return (
     <>
+    {/* <OrbitControls /> */}
     <color attach="background" args={["#FCF8F5"]} />
     <Environment preset='warehouse'/>
     <ambientLight intensity={1} />
-{/* 
+
     <directionalLight
     theatreKey='DirectionalLight'
-    intensity={0.5}
-    color={"#FCF8F5"}
-    position={[0,6, 0]} // Position the light at the ceiling level
-    rotation={[-Math.PI / 2, 0, 0]} // Rotate the light to point downwards
+    intensity={3}
+    color={"#f67b35"}
+    position={[10,30.4, 4.9]} // Position the light at the ceiling level
+    rotation={[0, 2, 0, 0]} // Rotate the light to point downwards
     castShadow
     shadow-mapSize-height={512}
     shadow-mapSize-width={512}
-/> */}
+    />
 
     {/* Background */}
     <mesh position={[0,0,-6]}>
@@ -85,7 +91,7 @@ function Scene() {
         </meshBasicMaterial>
     </mesh>
     {/* Background Text */}
-    <Center position={[0.5,1.9,-1]}>
+    {/* <Center position={[0.5,1.9,-1]}>
         <Text
         theatreKey='3DText' 
         font={".//fonts/AlloyInk-nRLyO.ttf"} 
@@ -102,13 +108,18 @@ function Scene() {
                 />
             </MeshDistortMaterial>
         </Text>
-    </Center>
+    </Center> */}
     {/* Product */}
-    <HexaBerryCan5 scale={0.047} position={[0,-0.3,0]} material={material.value.materials} meshRef={meshRef} />
+    <HexaBerryCan5 scale={0.047} position={[0, -0.3, 0]} material={material.value.materials} meshRef={meshRef} />
+    <HexaBerryCan1 scale={0.047} position={[0, -10, 0]} rotation={[0,0.12,0]} />
+    <HexaBerryCan2 scale={0.01} position={[0, -10, 0]} rotation={[-0.21, 0.63, 1.61]} />
+    <HexaBerryCan3 scale={0.047} position={[0, -10, 0]} rotation={[0, -0.33, 0]} />
+    <HexaBerrycan4 scale={0.047} position={[0, -10, 0]} rotation={[0, 0.36, 0]} />
+    <VendingMachine position={[0,-10,-2]} scale={1} rotation={[0, Math.PI / 6, 0]} />
     {/* Floor */}
     <e.mesh theatreKey='Floor' position={[0, -10, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <planeGeometry args={[25, 10, 32, 32]} />
-        <meshStandardMaterial attach="material" color="red" />
+        <planeGeometry args={[25, 12, 32, 32]} />
+        <meshStandardMaterial attach="material" color="#FCF8F5" />
     </e.mesh>
     </>
   )
