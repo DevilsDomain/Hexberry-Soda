@@ -32,7 +32,7 @@ function Scene() {
         camera.position.lerp(vec.set(mouse.x, mouse.y, camera.position.z), 0.05)
         camera.lookAt(0, 0, 0)
         // Text Distortion logic
-        // textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
+        textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
         // Background color change logic
         const background = sheet.object('background', {
             gradient: {
@@ -56,7 +56,7 @@ function Scene() {
         });
 
 
-    // Material change logic for theater js
+    // Material sheet object
     const material = sheet.object('material', {
         materials: types.stringLiteral(
             'materials',
@@ -64,6 +64,8 @@ function Scene() {
             ),
     }, {reconfigure: true})
 
+    // Background text sheet object
+    // const BackgroundText = e(Text, 'mesh');
 
   return (
     <>
@@ -85,15 +87,15 @@ function Scene() {
 
     {/* Background */}
     <mesh position={[0,0,-6]}>
-      <planeGeometry args={[27, 16, 32, 32]} />
+      <planeGeometry args={[27, 30, 32, 32]} />
         <meshBasicMaterial>
             <GradientTexture stops={[0, 1]} colors={gradientColors} size={1024} />
         </meshBasicMaterial>
     </mesh>
     {/* Background Text */}
-    {/* <Center position={[0.5,1.9,-1]}>
+    <Center position={[0.5,1.9,-1]}>
         <Text
-        theatreKey='3DText' 
+        theatreKey='BackgroundText'
         font={".//fonts/AlloyInk-nRLyO.ttf"} 
         fontSize={2.3}
         onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
@@ -108,7 +110,7 @@ function Scene() {
                 />
             </MeshDistortMaterial>
         </Text>
-    </Center> */}
+    </Center>
     {/* Product */}
     <HexaBerryCan5 scale={0.047} position={[0, -0.3, 0]} material={material.value.materials} meshRef={meshRef} />
     <HexaBerryCan1 scale={0.047} position={[0, -10, 0]} rotation={[0,0.12,0]} />
@@ -118,7 +120,7 @@ function Scene() {
     <VendingMachine position={[0,-10,-2]} scale={1} rotation={[0, Math.PI / 6, 0]} />
     {/* Floor */}
     <e.mesh theatreKey='Floor' position={[0, -10, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <planeGeometry args={[25, 12, 32, 32]} />
+        <planeGeometry args={[25, 30, 32, 32]} />
         <meshStandardMaterial attach="material" color="#FCF8F5" />
     </e.mesh>
     </>
