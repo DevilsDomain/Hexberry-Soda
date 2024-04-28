@@ -33,6 +33,7 @@ function Scene() {
         camera.lookAt(0, 0, 0)
         // Text Distortion logic
         textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
+        // textRef.current.uuid = "001"
         // Background color change logic
         const background = sheet.object('background', {
             gradient: {
@@ -60,12 +61,19 @@ function Scene() {
     const material = sheet.object('material', {
         materials: types.stringLiteral(
             'materials',
-            { 'Soda.001': 'Soda1', 'Soda.002': 'Soda2', 'Soda.004': 'Soda3'  },
+            { "Soda.001": 'Soda1', "Soda.003": 'Soda2', "Soda.004": 'Soda3'  },
             ),
     }, {reconfigure: true})
 
+    console.log(material.value.materials)
+
     // Background text sheet object
-    // const BackgroundText = e(Text, 'mesh');
+    const HexaBerryText = e(Text, 'mesh', {reconfigure: true});
+    const FlavorOneText = e(Text, 'mesh', {reconfigure: true});
+    const FlavorTwoText = e(Text, 'mesh', {reconfigure: true});
+    const FlavorThreeText = e(Text, 'mesh', {reconfigure: true});
+
+
 
   return (
     <>
@@ -94,14 +102,68 @@ function Scene() {
     </mesh>
     {/* Background Text */}
     <Center position={[0.5,1.9,-1]}>
-        <Text
-        theatreKey='BackgroundText'
+        <HexaBerryText
+        theatreKey='HexaberryText'
         font={".//fonts/AlloyInk-nRLyO.ttf"} 
         fontSize={2.3}
         onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
         >
             HEXABERRY
-            <MeshDistortMaterial ref={textRef} distort={0.1} speed={1}>
+            <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
+                <GradientTexture
+                stops={[0, 1]} 
+                colors={['#FF2F6A', '#FFB307']}
+                size={1024}
+                type={GradientType.Radial}
+                />
+            </MeshDistortMaterial>
+        </HexaBerryText>
+    </Center>
+    {/* <Center position={[0.5,1.9,-1]}>
+        <FlavorOneText
+        theatreKey='HexaberryText'
+        font={".//fonts/AlloyInk-nRLyO.ttf"} 
+        fontSize={2.3}
+        onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
+        >
+            Lemon&Lime
+            <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
+                <GradientTexture
+                stops={[0, 1]} 
+                colors={['#2FE9C7', '#F8CC30']}
+                size={512}
+                type={GradientType.Radial}
+                />
+            </MeshDistortMaterial>
+        </FlavorOneText>
+    </Center> */}
+    {/* <Center position={[0.5,1.9,-1]}>
+        <FlavorTwoText
+        theatreKey='HexaberryText'
+        font={".//fonts/AlloyInk-nRLyO.ttf"} 
+        fontSize={2.3}
+        onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
+        >
+            Berries
+            <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
+                <GradientTexture
+                stops={[0, 1]} 
+                colors={['#F32687', '#4461ED']}
+                size={1024}
+                type={GradientType.Radial}
+                />
+            </MeshDistortMaterial>
+        </FlavorTwoText>
+    </Center> */}
+    {/* <Center position={[0.5,1.9,-1]}>
+        <FlavorThreeText
+        theatreKey='ExoticText'
+        font={".//fonts/AlloyInk-nRLyO.ttf"} 
+        fontSize={2.3}
+        onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
+        >
+            Exotic
+            <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
                 <GradientTexture
                 stops={[0, 1]} 
                 colors={['#FD55A6', '#FCC737']}
@@ -109,8 +171,8 @@ function Scene() {
                 type={GradientType.Radial}
                 />
             </MeshDistortMaterial>
-        </Text>
-    </Center>
+        </FlavorThreeText>
+    </Center> */}
     {/* Product */}
     <HexaBerryCan5 scale={0.047} position={[0, -0.3, 0]} material={material.value.materials} meshRef={meshRef} />
     <HexaBerryCan1 scale={0.047} position={[0, -10, 0]} rotation={[0,0.12,0]} />
