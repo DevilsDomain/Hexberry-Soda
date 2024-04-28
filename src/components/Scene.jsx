@@ -33,7 +33,6 @@ function Scene() {
         camera.lookAt(0, 0, 0)
         // Text Distortion logic
         textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
-        // textRef.current.uuid = "001"
         // Background color change logic
         const background = sheet.object('background', {
             gradient: {
@@ -65,7 +64,6 @@ function Scene() {
             ),
     }, {reconfigure: true})
 
-    console.log(material.value.materials)
 
     // Background text sheet object
     const HexaBerryText = e(Text, 'mesh', {reconfigure: true});

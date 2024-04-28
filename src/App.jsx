@@ -16,7 +16,7 @@ import speechBubble3 from './assets/speechBubble3.svg';
 function App({sheet}) {
   return (
     <>
-    <ScrollControls pages={5} damping={0.3} maxSpeed={0.7}>
+    <ScrollControls pages={5} damping={0.3} maxSpeed={0.3}>
       <SheetProvider sheet={sheet} >
         <Scene />
       </SheetProvider>
