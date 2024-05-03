@@ -15,7 +15,7 @@ const sheet = getProject('HexBerry Animation').sheet('Scene');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <Canvas shadows gl={ {
+     <Canvas frameloop="demand" shadows gl={ {
             antialias: true,
             toneMapping: THREE.ACESFilmicToneMapping,
             outputColorSpace: THREE.SRGBColorSpace,

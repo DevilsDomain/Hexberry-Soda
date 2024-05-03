@@ -32,7 +32,7 @@ function Scene() {
         camera.position.lerp(vec.set(mouse.x, mouse.y, camera.position.z), 0.05)
         camera.lookAt(0, 0, 0)
         // Text Distortion logic
-        textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
+        // textRef.current.distort = MathUtils.lerp(textRef.current.distort, hovered ? 0.4 : 0, hovered ? 0.05 : 0.01)
         // Background color change logic
         const background = sheet.object('background', {
             gradient: {
@@ -67,10 +67,61 @@ function Scene() {
 
     // Background text sheet object
     const HexaBerryText = e(Text, 'mesh', {reconfigure: true});
-    const FlavorOneText = e(Text, 'mesh', {reconfigure: true});
+    const LemonText = e(Text, 'mesh', {reconfigure: true})
+    const LimeText = e(Text, 'mesh', {reconfigure: true})
     const FlavorTwoText = e(Text, 'mesh', {reconfigure: true});
     const FlavorThreeText = e(Text, 'mesh', {reconfigure: true});
+    //Navbar sheet object
+    const screenOne = document.getElementById('screen1');
+    const screenTwo = document.getElementById('screen2');
+    const screenThree = document.getElementById('screen3');
+    const screenFour = document.getElementById('screen4');
+    const screenFive = document.getElementById('screen5');
 
+    if(screenOne !== null) {
+        //Screen1
+        const screenOneTheatre = sheet.object('screen1', {
+        opacity: types.number(1, { range: [0, 1] }),
+        }, {reconfigure: true})
+        
+        screenOneTheatre.onValuesChange((screenOneTheatre) => {
+        screenOne.style.opacity = screenOneTheatre.opacity
+        })
+        //Screen 2
+        const screenTwoTheatre = sheet.object('screen2', {
+        opacity: types.number(1, { range: [0, 1] }),
+        }, {reconfigure: true})
+        
+        screenTwoTheatre.onValuesChange((screenTwoTheatre) => {
+        screenTwo.style.opacity = screenTwoTheatre.opacity
+        })
+        //Screen3
+        const screenThreeTheatre = sheet.object('screen3', {
+            opacity: types.number(1, { range: [0, 1] }),
+            }, {reconfigure: true})
+            
+            screenThreeTheatre.onValuesChange((screenThreeTheatre) => {
+            screenThree.style.opacity = screenThreeTheatre.opacity
+        })
+        //Screen4
+        const screenFourTheatre = sheet.object('screen4', {
+            opacity: types.number(1, { range: [0, 1] }),
+            }, {reconfigure: true})
+            
+            screenFourTheatre.onValuesChange((screenFourTheatre) => {
+            screenFour.style.opacity = screenFourTheatre.opacity
+        })
+        //Screen5
+        const screenFiveTheatre = sheet.object('screen5', {
+            opacity: types.number(1, { range: [0, 1] }),
+            }, {reconfigure: true})
+            
+            screenFiveTheatre.onValuesChange((screenFiveTheatre) => {
+            screenFive.style.opacity = screenFiveTheatre.opacity
+        })
+    }
+
+   
 
 
   return (
@@ -93,7 +144,7 @@ function Scene() {
 
     {/* Background */}
     <mesh position={[0,0,-6]}>
-      <planeGeometry args={[27, 30, 32, 32]} />
+      <planeGeometry args={[27, 30, 16, 16]} />
         <meshBasicMaterial>
             <GradientTexture stops={[0, 1]} colors={gradientColors} size={1024} />
         </meshBasicMaterial>
@@ -117,27 +168,45 @@ function Scene() {
             </MeshDistortMaterial>
         </HexaBerryText>
     </Center>
-    {/* <Center position={[0.5,1.9,-1]}>
-        <FlavorOneText
-        theatreKey='HexaberryText'
-        font={".//fonts/AlloyInk-nRLyO.ttf"} 
-        fontSize={2.3}
-        onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
-        >
-            Lemon&Lime
-            <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
-                <GradientTexture
-                stops={[0, 1]} 
-                colors={['#2FE9C7', '#F8CC30']}
-                size={512}
-                type={GradientType.Radial}
-                />
-            </MeshDistortMaterial>
-        </FlavorOneText>
-    </Center> */}
-    {/* <Center position={[0.5,1.9,-1]}>
+    {/* <FlavorOneText position={[-15,0,0]} theatreKey='LemonLimeText'> */}
+    <LemonText
+    font={".//fonts/AlloyInk-nRLyO.ttf"} 
+    fontSize={2.3}
+    onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
+    position={[-13,0,0]}
+    theatreKey='lemontext'
+    >
+        Lemon
+        <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
+            <GradientTexture
+            stops={[0, 1]} 
+            colors={['#2FE9C7', '#F8CC30']}
+            size={512}
+            type={GradientType.Radial}
+            />
+        </MeshDistortMaterial>
+    </LemonText>
+    <LimeText
+    font={".//fonts/AlloyInk-nRLyO.ttf"} 
+    fontSize={2.3}
+    onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
+    position={[13,-2.5,0]}
+    theatreKey='limetext'
+    >
+        Lime
+        <MeshDistortMaterial ref={textRef} distort={0.3} speed={1}>
+            <GradientTexture
+            stops={[0, 1]} 
+            colors={['#2FE9C7', '#F8CC30']}
+            size={512}
+            type={GradientType.Radial}
+            />
+        </MeshDistortMaterial>
+    </LimeText>
+    {/* </FlavorOneText> */}
+    <Center position={[-15,1.9,-1]}>
         <FlavorTwoText
-        theatreKey='HexaberryText'
+        theatreKey='BerriesText'
         font={".//fonts/AlloyInk-nRLyO.ttf"} 
         fontSize={2.3}
         onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}
@@ -152,8 +221,8 @@ function Scene() {
                 />
             </MeshDistortMaterial>
         </FlavorTwoText>
-    </Center> */}
-    {/* <Center position={[0.5,1.9,-1]}>
+    </Center>
+    <Center position={[-15,1.9,-1]}>
         <FlavorThreeText
         theatreKey='ExoticText'
         font={".//fonts/AlloyInk-nRLyO.ttf"} 
@@ -170,7 +239,7 @@ function Scene() {
                 />
             </MeshDistortMaterial>
         </FlavorThreeText>
-    </Center> */}
+    </Center> 
     {/* Product */}
     <HexaBerryCan5 scale={0.047} position={[0, -0.3, 0]} material={material.value.materials} meshRef={meshRef} />
     <HexaBerryCan1 scale={0.047} position={[0, -10, 0]} rotation={[0,0.12,0]} />
@@ -178,7 +247,7 @@ function Scene() {
     <HexaBerryCan3 scale={0.047} position={[0, -10, 0]} rotation={[0, -0.33, 0]} />
     <HexaBerrycan4 scale={0.047} position={[0, -10, 0]} rotation={[0, 0.36, 0]} />
     <VendingMachine position={[0,-10,-2]} scale={1} rotation={[0, Math.PI / 6, 0]} />
-    {/* Floor */}
+     {/* Floor */}
     <e.mesh theatreKey='Floor' position={[0, -10, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[25, 30, 32, 32]} />
         <meshStandardMaterial attach="material" color="#FCF8F5" />

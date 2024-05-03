@@ -21,9 +21,9 @@ function App({sheet}) {
         <Scene />
       </SheetProvider>
       <Scroll html className="gloria-hallelujah-regular">
-        <Navbar />
+        <Navbar sheet={sheet} />
         {/* Landing Page */}
-        <div className="w-screen h-screen relative flex flex-col items-center mt-20">
+        <div id="screen1" className="w-screen h-screen relative flex flex-col items-center mt-20">
           <img src={lines} alt="excitment lines" />
           <h6 className="text-sm">Where Flavor Meets Fun!</h6>
           <img src={lines} alt="excitment lines" className="transform rotate-180" />
@@ -35,7 +35,7 @@ function App({sheet}) {
           <img src={arrowUp} alt="up arrow" className="absolute right-[29rem] bottom-72" />
         </div>
         {/* Flavor 1 */}
-        <div className="w-screen h-screen flex flex-col items-end relative">
+        <div id="screen2" className="w-screen h-screen flex flex-col items-end relative">
           <p className=" text-center w-72 z-10 absolute top-20 right-44">The perfect balance of tangy lime and zesty lemon in every refreshing gulp.</p>
           <img src={speechBubble} alt="hand drawn speech bubble" className="h-96 w-96 absolute -top-14 right-32" />
           <div className=" absolute bottom-28 right-52">
@@ -44,7 +44,7 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-32 right-20" />
         </div>
         {/* Flavor 2 */}
-        <div className="w-screen h-screen relative">
+        <div id="screen3" className="w-screen h-screen relative">
         <p className=" text-center w-72 z-10 absolute top-44 right-[30rem]">A burst of ripe berries that tantalize your taste buds and leave you craving more.</p>
           <img src={speechBubble2} alt="hand drawn speech bubble" className="h-96 w-96 absolute top-7 left-[34rem]" />
           <div className=" absolute bottom-28 left-[36rem]">
@@ -53,7 +53,7 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute top-64 right-96" />
         </div>
         {/* Flavor 3 */}
-        <div className="w-screen h-screen relative">
+        <div id="screen4" className="w-screen h-screen relative">
         <p className=" text-center w-44 z-10 absolute bottom-60 right-80">vibrant blend that  transports you to paradise with every sip.</p>
           <img src={speechBubble3} alt="hand drawn speech bubble" className="h-96 w-64 absolute bottom-24 right-72" />
           <div className=" absolute bottom-28 left-96">
@@ -62,8 +62,7 @@ function App({sheet}) {
           <img src={lines} alt="excitment lines" className=" transform rotate-[125deg] absolute bottom-36 right-64" />
         </div>
         {/* Podium */}
-        <div className="w-screen h-screen">
-          <h1 className="text-3xl font-bold underline">Podium</h1>
+        <div id="screen5" className="w-screen h-screen">
         </div>
       </Scroll>
     </ScrollControls>
